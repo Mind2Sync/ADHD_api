@@ -36,11 +36,15 @@ import os
 class MRIPredictionAPIView(APIView):
     serializer_class = MRIPredictionSerializer
 
+
+    # Just for testing purpose
+
+
     def post(self, request, format=None):
         serializer = self.serializer_class(data=request.data)
         if serializer.is_valid():
             # Assigning a constant default prediction value for testing
-            prediction_value = 0.75
+            prediction_value = 2.9
 
             # Save the constant prediction value to the database
             serializer.save(prediction=prediction_value)
