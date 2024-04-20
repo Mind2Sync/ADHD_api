@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecure-&a@$zn9u7gqwwgknixahh*f&df8)0(d@j(4g*!kp=2r_@0%5hq
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["mindsync.azurewebsites.net", '127.0.0.1']
+CSRF_TRUSTED_ORIGINS = ["https://mindsync.azurewebsites.net/", 'https://127.0.0.1']
 
 
 # Application definition
