@@ -8,4 +8,5 @@ class MRIPrediction(models.Model):
     country = models.CharField(max_length=100)
     date = models.DateTimeField(default=timezone.now)
     prediction = models.FloatField(default=0)  
-    mriScan = models.FileField(upload_to='mri_scans') 
+    # mriScan = models.FileField(upload_to='mri_scans') 
+    mriScan = models.CharField(max_length=100)
