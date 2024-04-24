@@ -66,4 +66,4 @@ jobs:
         with:
           app-name: 'mindsync'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_35BA3B8A8EC94058826B818ED37F4FEF }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_E15D3C43845D41BBA17BC0F89DC287F4 }}
