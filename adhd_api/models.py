@@ -7,5 +7,6 @@ class MRIPrediction(models.Model):
     sex = models.CharField(max_length=10, default="")
     country = models.CharField(max_length=100)
     date = models.DateTimeField(default=timezone.now)
-    prediction = models.FloatField(default=0)  
+    prediction = models.FloatField(default=0)
+    adhdType = models.CharField(max_length=100, default="")
     mriScan = models.FileField(upload_to='mri_scans') 

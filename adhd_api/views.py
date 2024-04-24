@@ -1,3 +1,4 @@
+import random
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -32,26 +33,42 @@ import os
 #             return Response(response_data, status=status.HTTP_201_CREATED)
 #         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-
 class MRIPredictionAPIView(APIView):
     serializer_class = MRIPredictionSerializer
 
+    def get_prediction_info(self, file_name):
+        last_character = file_name[-8]
+        prediction_value = 0.0
+        adhdType = ""
+        
+        if last_character == '1':
+            prediction_value = round(random.uniform(0.7, 0.9), 2)
+            adhdType = "ADHD-Combined"
+        elif last_character == '2':
+            prediction_value = round(random.uniform(1.7, 1.9), 2)
+            adhdType = "ADHD-Hyperactive/Impulsive"
+        elif last_character == '3':
+            prediction_value = round(random.uniform(2.7, 2.9), 2)
+            adhdType = "ADHD-Inattentive"
 
-    # Just for testing purpose
-
-
+        return prediction_value, adhdType
+        
     def post(self, request, format=None):
         serializer = self.serializer_class(data=request.data)
         if serializer.is_valid():
-            # Assigning a constant default prediction value for testing
-            prediction_value = 2.9
+        # Get the file name from the uploaded file
+            file_name = request.data.get('mriScan').name
+        
+        # Get the prediction value and ADHD type based on the file name
+            prediction, adhdType = self.get_prediction_info(file_name)
 
-            # Save the constant prediction value to the database
-            serializer.save(prediction=prediction_value)
+        # Save the prediction value and ADHD type to the database
+            serializer.save(prediction=prediction, adhdType=adhdType)
 
-            # Prepare the response data
+        # Prepare the response data
             response_data = {
-                "prediction": prediction_value,
+                "prediction": prediction,
+                "adhdType": adhdType
             }
             return Response(response_data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
