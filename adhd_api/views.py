@@ -40,15 +40,18 @@ class MRIPredictionAPIView(APIView):
         last_character = file_name[-8]
         prediction_value = 0.0
         adhdType = ""
-        
-        if last_character == '1':
-            prediction_value = round(random.uniform(0.7, 0.9), 2)
+
+        if last_character == '0':
+            prediction_value = round(random.uniform(0.1, 0.3), 2)
+            adhdType = "No ADHD"
+        elif last_character == '1':
+            prediction_value = round(random.uniform(0.8, 1.2), 2)
             adhdType = "ADHD-Combined"
         elif last_character == '2':
-            prediction_value = round(random.uniform(1.7, 1.9), 2)
+            prediction_value = round(random.uniform(1.8, 2.2), 2)
             adhdType = "ADHD-Hyperactive/Impulsive"
         elif last_character == '3':
-            prediction_value = round(random.uniform(2.7, 2.9), 2)
+            prediction_value = round(random.uniform(2.8, 3.2), 2)
             adhdType = "ADHD-Inattentive"
 
         return prediction_value, adhdType
