@@ -52,4 +52,4 @@ typing_extensions==4.9.0
 tzdata==2023.4
 urllib3==2.2.0
 uvicorn==0.27.0.post1
-guvicorn
+gunicorn==20.1.06
