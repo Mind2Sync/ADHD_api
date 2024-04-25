@@ -10,3 +10,4 @@ class MRIPrediction(models.Model):
     prediction = models.FloatField(default=0)
     adhdType = models.CharField(max_length=100, default="")
     mriScan = models.FileField(upload_to='mri_scans') 
+    recommendations = models.CharField(max_length=2000, default="")
