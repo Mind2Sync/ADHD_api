@@ -10,4 +10,4 @@ class MRIPredictionSerializer(serializers.ModelSerializer):
 class PredictionSerializerGet(serializers.ModelSerializer):
     class Meta:
         model = MRIPrediction
-        fields =["name",'age',"sex","country","mriScan","prediction", "adhdType", "recommendations"]
+        fields =["name",'age',"sex","country","mriScan","prediction", "adhdType"]
